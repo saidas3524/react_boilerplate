@@ -6,7 +6,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 const VENDOR_LIBS = [
   'react','faker', 'lodash', 'redux', 'react-redux', 
-  'react-dom', 'redux-form', 'redux-thunk'
+  'react-dom', 'redux-form', 'redux-thunk','bootstrap','jquery'
 ];
 
 module.exports = {
@@ -36,7 +36,7 @@ module.exports = {
       test: /\.css$/
     },
     {
-      test: /\.(jpe?g|png|gif|svg)$/,
+      test: /\.(jpe?g|png|gif|svg|eot|ttf|woff|woff2)$/,
       use:[
         {
         loader: 'url-loader',
@@ -48,6 +48,10 @@ module.exports = {
     ]
   },
   plugins:[
+    new webpack.ProvidePlugin({
+      $:"jquery",
+      jQuery:"jquery"
+    }),
     new ExtractTextPlugin('style.css'),
     new webpack.optimize.CommonsChunkPlugin({
       name: ['vendor','manifest']

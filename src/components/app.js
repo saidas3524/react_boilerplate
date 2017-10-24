@@ -40,7 +40,11 @@ class App extends React.Component{
                 <Header/>
                 <button onClick={()=>{this.changeLocale('enUs')}}>English-US</button>
                 <button onClick={()=>{this.changeLocale('enUk')}}>English-UK</button>
-
+                {/* <div className="alert alert-danger" role="alert">
+                  <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  <span className="sr-only">Error:</span>
+                  Enter a valid email address
+                </div>  */}
 
                 <div className="space"></div>
                 <Footer/>

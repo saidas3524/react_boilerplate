@@ -13,3 +13,18 @@ div.thick {
     color: white;
 
 }
+#microsoft-logo{
+    width: 13%;
+    margin:1%; 
+
+}
+.avatar-section{
+    margin: 1%;
+    float: right;
+
+}
+#avatar{
+    border-radius: 50%;
+    width:40%;
+    margin: 1%;
+}
