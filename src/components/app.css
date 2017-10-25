@@ -13,7 +13,11 @@ div.thick {
     color: white;
 
 }
+.h1{
+    max-width: 100%;
+}
 #microsoft-logo{
+    max-width: 50%;
     width: 13%;
     margin:1%; 
 
@@ -23,8 +27,11 @@ div.thick {
     float: right;
 
 }
+.img {
+    max-width: 100%;
+}
 #avatar{
+    max-width: 40%;
     border-radius: 50%;
-    width:40%;
     margin: 1%;
 }

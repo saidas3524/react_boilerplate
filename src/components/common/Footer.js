@@ -23,7 +23,7 @@ class Footer extends React.Component {
         return (
             <div className="footer">
                 
-                <h1>{locale.strings.FooterName}</h1>
+                <h1>Footer</h1>
                 <p>{locale.strings.Footerpara}</p>
             </div>
         )
