@@ -42,6 +42,7 @@ class App extends React.Component {
     }
 
     languageChanged = (language)=>{
+        changeLocale(language);
         this.locale.setLanguage(language);
     }
     render() {
