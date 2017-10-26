@@ -40,15 +40,23 @@ class App extends React.Component {
     componentWillUpdate(nextProps, nextState) {
         this.locale.setLanguage(nextState.currentLocale);
     }
+
+    languageChanged = (language)=>{
+        this.locale.setLanguage(language);
+    }
     render() {
         return (
             <Router>
                 <div>
-                    <Header />
-                    <button onClick={() => { this.changeLocale('enUs') }}>English-US</button>
-                    <button onClick={() => { this.changeLocale('enUk') }}>English-UK</button>
+                    <header className="container-fluid">
+                        <Header />
+                    </header>
+                    <div style={{height:"840px"}} className="container-fluid">
                     <Route path="/user" component={UserProfile} />
-                    <Footer />
+                    </div>
+                    <footer className="container-fluid">
+                        <Footer languageChanged = {this.languageChanged}/>
+                    </footer>
                 </div>
             </Router>
         );

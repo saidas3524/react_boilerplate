@@ -6,7 +6,7 @@ class UserProfile extends Component{
 
     render(){
         return(
-            <div>
+            <div >
                 User
             </div>
         )
