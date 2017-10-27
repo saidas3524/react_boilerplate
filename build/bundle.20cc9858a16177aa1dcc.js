@@ -2053,6 +2053,11 @@ var App = function (_React$Component) {
             });
         };
 
+        _this.languageChanged = function (language) {
+            _this.changeLocale(language);
+            _this.locale.setLanguage(language);
+        };
+
         _this.locale = new _Locale2.default('enUs');
         return _this;
     }
@@ -2083,31 +2088,14 @@ var App = function (_React$Component) {
                     ),
                     _react2.default.createElement(
                         'div',
-                        { className: 'container-fluid' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'row' },
-                            _react2.default.createElement(
-                                'aside',
-                                { className: 'col-sm-2' },
-                                'COL 1'
-                            ),
-                            _react2.default.createElement(
-                                'section',
-                                { className: 'col-sm-8' },
-                                'COL 2'
-                            ),
-                            _react2.default.createElement(
-                                'aside',
-                                { className: 'col-sm-2' },
-                                'COL 3'
-                            )
-                        )
+                        { style: { height: "840px" }, className: 'container-fluid' },
+                        _react2.default.createElement(_reactRouterDom.Route, { path: '/user', component: _UserProfile2.default }),
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: NewsFeed })
                     ),
                     _react2.default.createElement(
                         'footer',
                         { className: 'container-fluid' },
-                        _react2.default.createElement(_Footer2.default, null)
+                        _react2.default.createElement(_Footer2.default, { languageChanged: this.languageChanged })
                     )
                 )
             );
@@ -2223,10 +2211,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var UserProfile = function (_Component) {
     _inherits(UserProfile, _Component);
 
-    function UserProfile() {
+    function UserProfile(props, context) {
         _classCallCheck(this, UserProfile);
 
-        return _possibleConstructorReturn(this, (UserProfile.__proto__ || Object.getPrototypeOf(UserProfile)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (UserProfile.__proto__ || Object.getPrototypeOf(UserProfile)).call(this, props, context));
     }
 
     _createClass(UserProfile, [{
@@ -4854,7 +4842,7 @@ var Header = function (_Component) {
 
         _this.state = {
             user: {
-                name: "sai krishna",
+                name: "Sai krishna Dasoju",
                 email: "saidaso@microsoft.com",
                 avatar_url: "../../Images/user_icon.png"
             }
@@ -4872,21 +4860,21 @@ var Header = function (_Component) {
                 { className: 'row' },
                 _react2.default.createElement(
                     'div',
-                    { className: 'col-sm-1' },
+                    { className: 'col-xs-12 col-md-2' },
                     _react2.default.createElement('img', { className: 'c-logo', src: 'https://assets.onestore.ms/cdnfiles/external/uhf/long/9a49a7e9d8e881327e81b9eb43dabc01de70a9bb/images/microsoft-gray.png' })
                 ),
                 _react2.default.createElement(
                     'div',
-                    { className: 'col-sm-9' },
+                    { className: ' col-md-offset-2 col-md-6 col-xs-10' },
                     _react2.default.createElement(
-                        'h2',
-                        null,
+                        'h3',
+                        { style: { marginTop: "10px" } },
                         locale.strings.HeaderName
                     )
                 ),
                 _react2.default.createElement(
                     'div',
-                    { className: 'col-sm-1' },
+                    { style: { float: 'right' }, className: 'col-md-2 col-xs-2 ' },
                     _react2.default.createElement(
                         _reactRouterDom.Link,
                         { to: '/user' },
@@ -4933,7 +4921,11 @@ var Avatar = function Avatar(_ref) {
     return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement('img', { id: 'avatar', src: 'https://mem.gfx.ms/me/MeControl/9.1.17292.1/msa_enabled.png' })
+        _react2.default.createElement(
+            'div',
+            { className: 'avatar_div' },
+            _react2.default.createElement('img', { id: 'avatar', src: 'https://mem.gfx.ms/me/MeControl/9.1.17292.1/msa_enabled.png' })
+        )
     );
 };
 
@@ -4980,8 +4972,22 @@ var Footer = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).call(this, props));
 
+        _this.onChange = function (event) {
+            _this.setState({
+                selectedLanguage: event.target.value
+            });
+            _this.props.languageChanged(event.target.value);
+        };
+
         _this.state = {
-            languages: ["English", "Spanish", "Dutch", "English  - UK", "French"]
+            languages: [{
+                Code: "enUs",
+                Language: "English"
+            }, {
+
+                Code: "enUk",
+                Language: "English-UK"
+            }]
         };
         return _this;
     }
@@ -4995,14 +5001,76 @@ var Footer = function (_React$Component) {
                 'div',
                 null,
                 _react2.default.createElement(
-                    'h2',
-                    null,
-                    'Footer'
-                ),
-                _react2.default.createElement(
-                    'p',
-                    null,
-                    locale.strings.Footerpara
+                    'div',
+                    { className: 'footer row' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'col-xs-12 col-md-6' },
+                        _react2.default.createElement('span', { style: { marginRight: '10px' }, className: 'glyphicon glyphicon-globe' }),
+                        _react2.default.createElement(
+                            'select',
+                            { name: 'localisation', className: 'selectpicker', value: this.state.value, onChange: this.onChange },
+                            this.state.languages.map(function (language) {
+                                return _react2.default.createElement(
+                                    'option',
+                                    { key: language.Code, value: language.Code },
+                                    language.Language
+                                );
+                            })
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'col-md-6 ' },
+                        _react2.default.createElement(
+                            'ul',
+                            { className: 'list-inline optionsPanel' },
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'list-inline-item' },
+                                _react2.default.createElement(
+                                    'a',
+                                    { href: '' },
+                                    locale.strings.ContactUs
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'list-inline-item' },
+                                _react2.default.createElement(
+                                    'a',
+                                    { href: '' },
+                                    ' ',
+                                    locale.strings.PrivacyTerms
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'list-inline-item' },
+                                _react2.default.createElement(
+                                    'a',
+                                    { href: '' },
+                                    ' ',
+                                    locale.strings.TermsOfUse
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'list-inline-item' },
+                                _react2.default.createElement(
+                                    'a',
+                                    { href: '' },
+                                    ' ',
+                                    locale.strings.TradeMarks
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'list-inline-item' },
+                                '\xA9 Microsoft 2017'
+                            )
+                        )
+                    )
                 )
             );
         }
@@ -5081,13 +5149,13 @@ exports.default = Locale;
 /* 191 */
 /***/ (function(module, exports) {
 
-module.exports = {"HeaderName":"Digital Operations Center","Headerpara":"UxModernisation","FooterName":"","Footerpara":""}
+module.exports = {"HeaderName":"Digital Operations Center","Headerpara":"UxModernisation","FooterName":"","Footerpara":"","ContactUs":"Contact us","TradeMarks":"Trademarks","PrivacyTerms":"Privacy & Cookies","TermsOfUse":"Terms of use"}
 
 /***/ }),
 /* 192 */
 /***/ (function(module, exports) {
 
-module.exports = {"HeaderName":"Digital Operations Center-Uk","Headerpara":"UxModernisation-Uk","FooterName":"","Footerpara":""}
+module.exports = {"HeaderName":"Digital Operations Center-Uk","Headerpara":"UxModernisation-Uk","FooterName":"","Footerpara":"","ContactUs":"Uk-Contact us","TradeMarks":"Uk-Trademarks","PrivacyTerms":"Uk-Privacy & Cookies","TermsOfUse":"Uk-Terms of use"}
 
 /***/ }),
 /* 193 */

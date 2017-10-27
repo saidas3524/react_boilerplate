@@ -5,6 +5,7 @@ import Footer from './common/Footer';
 import './app.css';
 import Locale from './common/Locale';
 import UserProfile from './User/UserProfile';
+import WelcomePage from './Welcome/WelcomePage';
 
 import {
     BrowserRouter as Router,
@@ -54,6 +55,7 @@ class App extends React.Component {
                     </header>
                     <div style={{height:"840px"}} className="container-fluid">
                     <Route path="/user" component={UserProfile} />
+                    <Route exact path="/" component={WelcomePage} />
                     </div>
                     <footer className="container-fluid">
                         <Footer languageChanged = {this.languageChanged}/>
