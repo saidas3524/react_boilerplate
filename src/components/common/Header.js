@@ -31,13 +31,17 @@ class Header extends Component {
         const { locale } = this.props;
         return (
             <div className="row">
+
                 <div className="col-xs-12 col-md-2">
-                    <img className="c-logo" src="https://assets.onestore.ms/cdnfiles/external/uhf/long/9a49a7e9d8e881327e81b9eb43dabc01de70a9bb/images/microsoft-gray.png"/>
-                    </div>
-                <div className=" col-md-offset-2 col-md-6 col-xs-10">
-                    <h3 style={{marginTop:"10px"}}>{locale.strings.HeaderName}</h3>
+                    <Link to="/">
+                        <img className="c-logo" src="https://assets.onestore.ms/cdnfiles/external/uhf/long/9a49a7e9d8e881327e81b9eb43dabc01de70a9bb/images/microsoft-gray.png" />
+                    </Link>
                 </div>
-                <div style={{float:'right'}} className="col-md-2 col-xs-2 ">
+
+                <div className=" col-md-offset-2 col-md-6 col-xs-10">
+                    <h3 style={{ marginTop: "10px" }}>{locale.strings.HeaderName}</h3>
+                </div>
+                <div style={{ float: 'right' }} className="col-md-2 col-xs-2 ">
                     <Link to="/user">
                         <Avatar user={this.state.user} />
                     </Link>

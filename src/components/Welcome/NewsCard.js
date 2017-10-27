@@ -13,11 +13,11 @@ const NewsCard = ({ news }) => {
         //     </div>
         // </div>
 
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">{news.title}</h3>
+        <div className="panel panel-primary">
+            <div className="panel-heading">
+                <h3 className="panel-title">{news.title}</h3>
             </div>
-            <div class="panel-body"> {news.message} </div>
+            <div className="panel-body"> {news.message} </div>
         </div>
     );
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NewsFeed from './NewsFeed';
+import LocaleHOC from '../common/LocaleHOC'
 
 class WelcomePage extends Component {
 
@@ -33,6 +34,7 @@ class WelcomePage extends Component {
         };
     }
     render() {
+        const { locale } = this.props;
         return (
             <div>
                 <br/>
@@ -41,9 +43,7 @@ class WelcomePage extends Component {
                 <div className="row"><h1 className="col-xs-12">Hi {this.state.user.name}!</h1></div>
                 <div className="row">
                     <h2 className="col-xs-12"></h2>
-                    <p className="col-xs-12">From this HOme page you can access the specific Microsoft OEm Operations applications you use for your job function . Just select an application from one of the fucntional areas listed in the menu.<br />
-                        You can also view current notifications in the News and Information area below. if you need help you can contact us
-                </p>
+                    <p className="col-xs-12">{locale.strings.WelcomeMessage}<br/>{locale.strings.WelcomeMessage2}</p>
                 </div>
                 <div className="row">
                     <h3 className="col-xs-12">News and Alerts</h3>
@@ -54,4 +54,4 @@ class WelcomePage extends Component {
     }
 }
 
-export default WelcomePage;
+export default LocaleHOC(WelcomePage);
