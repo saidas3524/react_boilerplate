@@ -42,7 +42,7 @@ class App extends React.Component {
         this.locale.setLanguage(nextState.currentLocale);
     }
 
-    languageChanged = (language)=>{
+    languageChanged = (language) => {
         this.changeLocale(language);
         this.locale.setLanguage(language);
     }
@@ -53,12 +53,12 @@ class App extends React.Component {
                     <header className="container-fluid">
                         <Header />
                     </header>
-                    <div style={{height:"840px"}} className="container-fluid">
-                    <Route path="/user" component={UserProfile} />
-                    <Route exact path="/" component={WelcomePage} />
+                    <div style={{ minHeight: "1000px" }} className="container-fluid">
+                        <Route path="/user" component={UserProfile} />
+                        <Route exact path="/" component={WelcomePage} />
                     </div>
                     <footer className="container-fluid">
-                        <Footer languageChanged = {this.languageChanged}/>
+                        <Footer languageChanged={this.languageChanged} />
                     </footer>
                 </div>
             </Router>
