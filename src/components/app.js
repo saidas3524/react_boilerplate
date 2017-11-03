@@ -6,7 +6,9 @@ import './app.css';
 import Locale from './common/Locale';
 import UserProfile from './User/UserProfile';
 import WelcomePage from './Welcome/WelcomePage';
+import {connect} from 'react-redux';
 
+import { getCurrentUserInfo } from '../actions'
 import {
     BrowserRouter as Router,
     Route,
@@ -14,12 +16,32 @@ import {
 } from 'react-router-dom'
 
 
+import MSAL_Wrapper from "../api/msal_wrapper"
+
 class App extends React.Component {
 
     constructor(props, context) {
         super(props, context);
         this.locale = new Locale('enUs');
     }
+
+    componentWillMount() {
+        setTimeout(function() { 
+            console.log("user Name Inside:"+ MSAL_Wrapper.userName)            
+            if(MSAL_Wrapper.userName)
+            {
+                this.props.getCurrentUserInfo();
+            }
+            else
+            {
+                MSAL_Wrapper.loginRedirect();
+                
+            }}.bind(this),
+             1000);
+        console.log("user Name :"+ MSAL_Wrapper.userName)
+    
+    }
+
     static childContextTypes = {
         locale: PropTypes.object
     }
@@ -66,5 +88,10 @@ class App extends React.Component {
     }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+    getCurrentUserInfo(){
+        dispatch(getCurrentUserInfo('test'));
+    }
+});
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);

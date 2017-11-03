@@ -11,7 +11,7 @@ const VENDOR_LIBS = [
 
 module.exports = {
   entry: {
-    bundle: './src/index.js',
+    bundle: ['babel-polyfill','./src/index.js'],
     vendor: VENDOR_LIBS
   },
   output: {
@@ -25,7 +25,8 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel-loader',
       query: {
-        presets: ['react', 'es2015', 'stage-1']
+        presets: ['react', 'es2015', 'stage-1'],
+        plugins: ['transform-object-rest-spread']
       }
     }
     ,
