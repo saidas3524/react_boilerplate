@@ -22,10 +22,24 @@ export function* currentUserSaga() {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
           'Authorization': `Bearer ${accesstoken}`,
         }
       });
-    const claimsData = yield apply(response, response.json);
+
+      const navData = yield apply(response, response.json);
+      console.log("navData :"+ navData);
+
+      const responseC = yield call(fetch,'https://api.microsoftoem.net/Companyaad/royd/v1/GetClaims', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${accesstoken}`,
+        }
+      });
+
+    const claimsData = yield apply(responseC, responseC.json);
     console.log("claimsData :"+ claimsData);
 
     var data = fromJS({ user: {
