@@ -41,9 +41,9 @@ class Header extends Component {
                 <div className=" col-md-offset-2 col-md-6 col-xs-10">
                     <h3 style={{ marginTop: "10px" }}>{locale.strings.HeaderName}</h3>
                 </div>
-                <div style={{ float: 'right' }} className="col-md-2 col-xs-2 ">
+                <div  className="col-md-2 col-xs-2 ">
                     <Link to="/user">
-                        <Avatar user={this.state.user} />
+                        <Avatar className="avatar_div" user={this.state.user} />
                     </Link>
                 </div>
             </div>
