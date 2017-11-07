@@ -19,6 +19,7 @@ module.exports = {
     publicPath: '/',
     filename: '[name].[chunkhash].js'
   },
+  devtool: 'source-map',
   module: {
     rules: [{
       test: /\.js?$/,

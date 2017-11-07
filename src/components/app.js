@@ -27,18 +27,22 @@ class App extends React.Component {
 
     componentWillMount() {
         setTimeout(function() { 
-            console.log("user Name Inside:"+ MSAL_Wrapper.userName)            
-            if(MSAL_Wrapper.userName)
-            {
-                this.props.getCurrentUserInfo();
-            }
-            else
-            {
-                MSAL_Wrapper.loginRedirect();
+            console.log("user Name Inside:"+ MSAL_Wrapper.userName)     
+          //  debugger;       
+            this.props.getCurrentUserInfo();
+            // if(MSAL_Wrapper.userName)
+            // {
+            //     this.props.getCurrentUserInfo();
+            // }
+            // else
+            // {
+            //     MSAL_Wrapper.loginRedirect();
                 
-            }}.bind(this),
-             1000);
-        console.log("user Name :"+ MSAL_Wrapper.userName)
+            // }
+            }.bind(this),
+              1000);
+        console.log("user Name :"+ MSAL_Wrapper.userName);
+        
     
     }
 

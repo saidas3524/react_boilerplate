@@ -12,12 +12,12 @@ class MSAL_Wrapper {
    
     constructor() {
         var self=this;
-        this._type = 'MSAL_Wrapper';
+        this._type = 'MSAL_Wrapper';       
         this.userName =  this.clientApplication.userName;
       }
 
       clientApplication = new UserAgentApplication(applicationConfig.clientID, applicationConfig.authority,
-        (errorDesc, token, error, tokenType) => {
+              (errorDesc, token, error, tokenType) => {
            // debugger;
             // Called after loginRedirect or acquireTokenPopup
             if (tokenType == "id_token") {
@@ -33,7 +33,7 @@ class MSAL_Wrapper {
 
     getUserName()
     {
-        return this.userName;
+        return this.clientApplication.userName;
     }
 
     logMessage(message) {

@@ -15,57 +15,63 @@ export function* currentUserSaga() {
     // debugger;
    
     // const accestoken = yield call(MSAL_Wrapper.clientApplication.acquireTokenSilent,  ['d1d9a68c-35e0-4ff5-ac06-3ef3dc438bc6']);
+    try{
     const accesstoken = yield call(MSAL_Wrapper.getAccessToken);
-    
-     console.log("accesstoken :"+ accesstoken);
-     const response = yield call(fetch,'https://api.microsoftoem.net/Companyaad/royd/v1/GetNavigation', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': `Bearer ${accesstoken}`,
-        }
-      });
+    console.log("accesstoken :"+ accesstoken);
+    const response = yield call(fetch,'https://api.microsoftoem.net/Companyaad/royd/v1/GetNavigation', {
+       method: 'GET',
+       headers: {
+         'Content-Type': 'application/json',
+         'Accept': 'application/json',
+         'Authorization': `Bearer ${accesstoken}`,
+       }
+     });
 
-      const navData = yield apply(response, response.json);
-      console.log("navData :"+ navData);
+     const navData = yield apply(response, response.json);
+     console.log("navData :"+ navData);
 
-      const responseC = yield call(fetch,'https://api.microsoftoem.net/Companyaad/royd/v1/GetClaims', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': `Bearer ${accesstoken}`,
-        }
-      });
+     const responseC = yield call(fetch,'https://api.microsoftoem.net/Companyaad/royd/v1/GetClaims', {
+       method: 'GET',
+       headers: {
+         'Content-Type': 'application/json',
+         'Accept': 'application/json',
+         'Authorization': `Bearer ${accesstoken}`,
+       }
+     });
 
-    const claimsData = yield apply(responseC, responseC.json);
-    console.log("claimsData :"+ claimsData);
+   const claimsData = yield apply(responseC, responseC.json);
+   console.log("claimsData :"+ claimsData);
 
-    var data = fromJS({ user: {
-        name: "Sai Krishna Dasoju",
-        newsFeed: [
-            {
-                Id: "1",
-                title: "Microsoft Hikes",
-                message: "test message test message test messagetest message test messagetest message test messagetest message test message test message test message test messagetest message test messagetest message test messagetest message test messagetest message test message test messagetest message test messagetest message test messagetest message test messagetest message test message test messagetest message test messagetest message test messagetest message test messagetest message test message test messagetest message test messagetest message test messagetest message test message",
+   var data = fromJS({ user: {
+       name: "Sai Krishna Dasoju",
+       newsFeed: [
+           {
+               Id: "1",
+               title: "Microsoft Hikes",
+               message: "test message test message test messagetest message test messagetest message test messagetest message test message test message test message test messagetest message test messagetest message test messagetest message test messagetest message test message test messagetest message test messagetest message test messagetest message test messagetest message test message test messagetest message test messagetest message test messagetest message test messagetest message test message test messagetest message test messagetest message test messagetest message test message",
 
-            },
-            {
-                Id: "2",
-                title: "Microsoft Hike3s",
-                message: "test test message test message test messagetest message test messagetest message test messagetest message test messagetest message test message test messagetest message test messagetest message test messagetest message test messagetest message test message test messagetest message test messagetest message test messagetest message test messagemessage test message test messagetest message test messagetest message test messagetest message test message",
+           },
+           {
+               Id: "2",
+               title: "Microsoft Hike3s",
+               message: "test test message test message test messagetest message test messagetest message test messagetest message test messagetest message test message test messagetest message test messagetest message test messagetest message test messagetest message test message test messagetest message test messagetest message test messagetest message test messagemessage test message test messagetest message test messagetest message test messagetest message test message",
 
-            },
-            {
-                Id: "3",
-                title: "Microsoft Hike4s",
-                message: "test message testtest message test message test messagetest message test messagetest message test messagetest message test messagetest message test message test messagetest message test messagetest message test messagetest message test messagetest message test message test messagetest message test messagetest message test messagetest message test message message test messagetest message test messagetest message test messagetest message test message",
+           },
+           {
+               Id: "3",
+               title: "Microsoft Hike4s",
+               message: "test message testtest message test message test messagetest message test messagetest message test messagetest message test messagetest message test message test messagetest message test messagetest message test messagetest message test messagetest message test message test messagetest message test messagetest message test messagetest message test message message test messagetest message test messagetest message test messagetest message test message",
 
-            }
+           }
 
-        ]
+       ]
+   }
+   });
+   yield put(setCurrentUser(data));
     }
-    });
-    yield put(setCurrentUser(data));
+    catch(error){
+        MSAL_Wrapper.loginRedirect();
+        return;
+    }
+    
 }
