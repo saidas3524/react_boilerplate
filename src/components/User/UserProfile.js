@@ -5,6 +5,7 @@ import Avatar from '../common/Avatar';
 import UserReadOnlyProfile from '../User/UserReadOnlyProfile';
 
 
+
 class UserProfile extends Component {
 
 
@@ -25,6 +26,7 @@ class UserProfile extends Component {
 
     render() {
         const { user } = this.state;
+        
         return (
             <div>
                 <br />
@@ -46,12 +48,13 @@ class UserProfile extends Component {
 
             </div> */}
                 <form style={{ width: '100%', paddingBottom: "15px" }}>
-                    <div style={{ backgroundColor: "#f2f2f2" , marginBottom:"15px", paddingBottom:"15px" }} className="col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-3  col-sm-6 col-xs-12">
+                    <div style={{ backgroundColor: "#f2f2f2", marginBottom: "15px", paddingBottom: "15px" }} className="col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-3  col-sm-6 col-xs-12">
                         <div style={{ margin: "20px" }}>
                             <UserReadOnlyProfile user={user} />
                             <br />
                             <h4>Settings</h4>
                             <hr />
+                          
                             <TextInput readonly={false} name="Name" label="Name" value={user.name} />
                             <TextInput readonly={true} name="LastName" label="Last Name" value={user.lastName} />
                             <TextInput readonly={true} name="ContactEmail" label="Contact Email" value={user.contactEmail} />
@@ -73,3 +76,4 @@ class UserProfile extends Component {
 }
 
 export default UserProfile;
+

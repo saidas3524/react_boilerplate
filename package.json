@@ -17,7 +17,7 @@
   "author": "OEM",
   "license": "ISC",
   "devDependencies": {
-    "@ms-fw/fw-react": "^1.25.184-beta.0",
+    "@ms-fw/fw-react": "^1.25.191-beta.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
