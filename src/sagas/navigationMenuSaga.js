@@ -6,18 +6,13 @@ import MSAL_Wrapper from "../api/msal_wrapper"
 
 import { SET_ACCESS_TOKEN, setNavigationMenu,setCurrentUser } from '../actions';
 
+import { InvokeUrl } from "./utilitySagas";
+
 export function* navigationMenuSaga() {
     try {
         const { accessToken } = yield take(SET_ACCESS_TOKEN);
 
-        const response = yield call(fetch, 'https://api.microsoftoem.net/Companyaad/royd/v1/GetNavigation', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
-            }
-        });
+        const response = yield call(InvokeUrl, 'https://api.microsoftoem.net/Companyaad/royd/v1/GetNavigation', 'GET');
 
         const navData = yield apply(response, response.json);
         console.log("navData :" + navData);
@@ -63,7 +58,7 @@ export function* navigationMenuSaga() {
         yield put(setCurrentUser(data));
     }
     catch (error) {
-        //MSAL_Wrapper.loginRedirect();
+        MSAL_Wrapper.loginRedirect();
         throw error;
         return;
     }

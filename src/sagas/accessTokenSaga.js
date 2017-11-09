@@ -16,8 +16,6 @@ export function* accessTokenSaga() {
         const accessToken = yield call(MSAL_Wrapper.getAccessToken);
         console.log("accesstoken :" + accessToken);
         yield put(setAccessToken(accessToken));
-        
-
     }
     catch (error) {
         MSAL_Wrapper.loginRedirect();

@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable'
 // TODO... finalize value list
 export const defaultState = fromJS({
-    currentUser:null   
+    currentUser:null,
+    user:null   
 });
