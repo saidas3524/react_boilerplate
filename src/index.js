@@ -12,6 +12,7 @@ import Routes from './routes';
 import App from './components/app';
 import reducers from './reducers';
 
+
 const store = getStore();
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 

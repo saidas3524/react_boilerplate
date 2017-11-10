@@ -1,5 +1,5 @@
-import  * as reducers from './reducers'
-import { fromJS } from 'immutable'
+import  * as reducers from './reducers';
+import { fromJS } from 'immutable';
 
 export const combineReducers = (config) =>{
 
