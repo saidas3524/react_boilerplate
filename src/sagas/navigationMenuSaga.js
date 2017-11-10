@@ -57,7 +57,7 @@ export function* navigationMenuSaga() {
         });
         yield put(setCurrentUser(data));
     }
-    catch (error) {
+    catch (error) {        
         MSAL_Wrapper.loginRedirect();
         throw error;
         return;

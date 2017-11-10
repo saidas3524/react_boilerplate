@@ -16,7 +16,8 @@ import {
 } from 'react-router-dom'
 import {NavigationContainer} from "./Navigation"
 
-
+import 'jquery';
+import 'bootstrap/dist/js/bootstrap';
 import MSAL_Wrapper from "../api/msal_wrapper"
 
 class App extends React.Component {
