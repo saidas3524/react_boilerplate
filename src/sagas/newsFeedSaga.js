@@ -1,27 +1,23 @@
-import { take,call, put,apply } from "redux-saga/effects";
+import { take, call, put, apply } from "redux-saga/effects";
 import fetch from "isomorphic-fetch";
 
-import {fromJS} from 'immutable';
+import { fromJS } from 'immutable';
 
 
-import { setClaims,SET_CLAIMS } from '../actions';
+import { InvokeUrl } from "./utilitySagas";
+import { SET_CURRENT_USER,setNewsFeed } from '../actions';
 
 export function* newsFeedSaga() {
     try {
-        const { claims } = yield take(SET_CLAIMS);
 
-        const responseC = yield call(fetch, 'https://api.microsoftoem.net/Companyaad/royd/v1/GetClaims', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
-            }
-        });
+        var {UserID}   = yield take(SET_CURRENT_USER);  
 
-        const claimsData = yield apply(responseC, responseC.json);
-        console.log("claimsData :" + claimsData);
-        yield put(setClaims(claimsData));
+        const responseC = yield call(InvokeUrl, `https://localhost/MS.IT.Oem.Provisioning.NavigationAndProfile.WebApi/GetMessagesById?userId=${UserID}`, 'GET');
+
+        const newsFeed = yield apply(responseC, responseC.json);
+        console.log(newsFeed);
+        //var data = fromJS(({ user: UserData }));
+        yield put(setNewsFeed(newsFeed));
     }
     catch (error) {
         throw error;

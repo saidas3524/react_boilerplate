@@ -55,7 +55,8 @@ export function* navigationMenuSaga() {
                 ]
             }
         });
-        yield put(setCurrentUser(data));
+       // yield put(setCurrentUser(data));
+    
     }
     catch (error) {
         MSAL_Wrapper.loginRedirect();

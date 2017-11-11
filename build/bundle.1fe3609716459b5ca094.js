@@ -23227,35 +23227,31 @@ function claimsSaga() {
 
                 case 3:
                     responseC = _context.sent;
-
-
-                    debugger;
-                    _context.next = 7;
+                    _context.next = 6;
                     return (0, _effects.apply)(responseC, responseC.json);
 
-                case 7:
+                case 6:
                     claimsData = _context.sent;
 
-                    debugger;
                     console.log("claimsData :" + claimsData);
-                    _context.next = 12;
+                    _context.next = 10;
                     return (0, _effects.put)((0, _actions.setClaims)(claimsData));
 
-                case 12:
-                    _context.next = 18;
+                case 10:
+                    _context.next = 16;
                     break;
 
-                case 14:
-                    _context.prev = 14;
+                case 12:
+                    _context.prev = 12;
                     _context.t0 = _context["catch"](0);
                     throw _context.t0;
 
-                case 18:
+                case 16:
                 case "end":
                     return _context.stop();
             }
         }
-    }, _marked, this, [[0, 14]]);
+    }, _marked, this, [[0, 12]]);
 }
 
 /***/ }),
@@ -26929,4 +26925,4 @@ exports.default = NewsCard;
 
 /***/ })
 ],[283]);
-//# sourceMappingURL=bundle.703efb089b4f4b2c9dd8.js.map
+//# sourceMappingURL=bundle.1fe3609716459b5ca094.js.map

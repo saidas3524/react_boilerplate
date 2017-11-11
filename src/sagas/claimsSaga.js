@@ -32,9 +32,7 @@ export function* claimsSaga() {
         // });
         const responseC = yield call(InvokeUrl, 'https://api.microsoftoem.net/Companyaad/royd/v1/GetClaims', 'GET');
 
-        debugger;
         const claimsData = yield apply(responseC, responseC.json);
-        debugger;
         console.log("claimsData :" + claimsData);
         yield put(setClaims(claimsData));
     }
