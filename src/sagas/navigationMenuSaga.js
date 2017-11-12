@@ -2,7 +2,7 @@ import { take,call, put,apply } from "redux-saga/effects";
 //import fetch from "isomorphic-fetch";
 import {} from "../utility"
 import {fromJS} from 'immutable';
-//import MSAL_Wrapper from "../api/msal_wrapper"
+import MSAL_Wrapper from "../api/msal_wrapper"
 
 import { SET_ACCESS_TOKEN, setNavigationMenu,setCurrentUser } from '../actions';
 
@@ -13,10 +13,21 @@ export function* navigationMenuSaga() {
         const { accessToken } = yield take(SET_ACCESS_TOKEN);
 
         const response = yield call(InvokeUrl, 'https://api.microsoftoem.net/Companyaad/royd/v1/GetNavigation', 'GET');
-
         const navData = yield apply(response, response.json);
-        console.log("navData :" + navData);
-        yield put(setNavigationMenu(navData));
+        var updatedMenu = navData.Items.map(function(d) {
+            var dinner1 = d.Items.map(function(d1){ 
+            var dinner2 = d1.Items.map(function(d2){ 
+            var dinner3 = d2.Items.map(function(d3){ 
+            return { text: d3.DisplayText, key: d3.ItemKey, href: d3.NaviationUri};});
+            return { text: d2.DisplayText, key: d2.ItemKey, href: d2.NaviationUri,menuItems :dinner3};});
+            
+            return { text: d1.DisplayText, key: d1.ItemKey, href: d1.NaviationUri,menuItems :dinner2};});
+            return {buttonText: d.DisplayText, key: d.ItemKey,menuItems :dinner1}});
+            console.log(JSON.stringify(updatedMenu));
+
+        
+        console.log("navData :" + updatedMenu);
+        yield put(setNavigationMenu(updatedMenu));
         var data = fromJS({
             user: {
                 name: "Sai Krishna Dasoju",
@@ -58,8 +69,9 @@ export function* navigationMenuSaga() {
         yield put(setCurrentUser(data));
     }
     catch (error) {        
-        MSAL_Wrapper.loginRedirect();
-        throw error;
+        //MSAL_Wrapper.loginRedirect();
+        //throw error;
+        console.log("navigationMenuSage "+error);
         return;
     }
 }
