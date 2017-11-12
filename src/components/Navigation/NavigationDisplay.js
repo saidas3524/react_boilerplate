@@ -94,6 +94,7 @@ class NavLinkHeader extends Component {
   }
   render() {
     var active = false;
+    var boldStyle={fontWeight: 'bold'}
     var links = this.props.links.map(function (link) {
       if (link.active) {
         active = true;
@@ -104,7 +105,7 @@ class NavLinkHeader extends Component {
     });
     return (
       <span>
-        <li className={(this.props.active ? "active disabled" : "disabled")}><a href={this.props.href}>{this.props.text}</a></li>
+        <li className={(this.props.active ? "active disabled" : "disabled")} style={boldStyle}>{this.props.text}</li>
         {links}
         <li role="separator" className="divider"></li>
       </span>
