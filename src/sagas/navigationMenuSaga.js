@@ -24,10 +24,9 @@ export function* navigationMenuSaga() {
             return { text: d1.DisplayText, key: d1.ItemKey, href: d1.NaviationUri,menuItems :dinner2};});
             return {buttonText: d.DisplayText, key: d.ItemKey,menuItems :dinner1}});
             console.log(JSON.stringify(updatedMenu));
-
         
-        console.log("navData :" + updatedMenu);
         yield put(setNavigationMenu(updatedMenu));
+        
         var data = fromJS({
             user: {
                 name: "Sai Krishna Dasoju",
