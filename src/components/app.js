@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 import {ActionBar} from '@ms-fw/fw-react'
 import { getCurrentUserInfo } from '../actions'
 import {
-    BrowserRouter as Router,
+    BrowserRouter as Router, 
     Route,
     Link
 } from 'react-router-dom'
