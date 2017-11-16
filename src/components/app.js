@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Header from './common/Header';
 import Footer from './common/Footer';
+
+import Async from 'react-code-splitting';
+import asyncComponent  from "../AsyncComponent";
 import './app.css';
 import Locale from './common/Locale';
 import UserProfile from './User/UserProfile';
+
 import WelcomePage from './Welcome/WelcomePage';
 import {connect} from 'react-redux';
+import createHistory from 'history/createBrowserHistory'
 
 import { getCurrentUserInfo } from '../actions'
 import {
@@ -14,12 +19,19 @@ import {
     Route,
     Link
 } from 'react-router-dom'
+var ReactAI  = require('react-appinsights');
+ReactAI.init({instrumentationKey:'cb845a63-5172-4e93-ab09-24f30f8987c6'});
 
+const history = createHistory()
+history.listen((location, action) => {
+  ReactAI.trackRouterChange();
+});
 
+var TrackedComponent = ReactAI.TrackedComponent;
 
-import MSAL_Wrapper from "../api/msal_wrapper"
+import MSAL_Wrapper from "../api/msal_wrapper";
 
-class App extends React.Component {
+class App extends TrackedComponent {
 
     constructor(props, context) {
         super(props, context);
@@ -27,6 +39,7 @@ class App extends React.Component {
     }
 
     componentWillMount() {
+        super.componentWillMount();
         setTimeout(function() { 
             console.log("user Name Inside:"+ MSAL_Wrapper.userName)     
           //  debugger;       
@@ -75,7 +88,7 @@ class App extends React.Component {
     }
     render() {
         return (
-            <Router>
+            <Router history={history}>
                 <div>
                     <header className="container-fluid">
                         <Header />
