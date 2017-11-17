@@ -12,7 +12,7 @@ export function* newsFeedSaga() {
 
         var {UserID}   = yield take(SET_CURRENT_USER);  
 
-        const responseC = yield call(InvokeUrl, `https://localhost/MS.IT.Oem.Provisioning.NavigationAndProfile.WebApi/GetMessagesById?userId=${UserID}`, 'GET');
+        const responseC = yield call(InvokeUrl, `https://localhost/NavigationAndProfile.WebApi/GetMessagesByUserId`, 'GET');
 
         const newsFeed = yield apply(responseC, responseC.json);
         console.log(newsFeed);
