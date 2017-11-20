@@ -25,6 +25,10 @@ class UserProfile extends TrackedComponent {
 
     }
 
+    textChanged = () =>{
+
+    }
+
     render() {
         const { user } = this.state;
         
@@ -56,9 +60,9 @@ class UserProfile extends TrackedComponent {
                             <h4>Settings</h4>
                             <hr />
                           
-                            <TextInput readonly={false} name="Name" label="Name" value={user.name} />
-                            <TextInput readonly={true} name="LastName" label="Last Name" value={user.lastName} />
-                            <TextInput readonly={true} name="ContactEmail" label="Contact Email" value={user.contactEmail} />
+                            <TextInput readonly={false} onChange={this.textChanged} name="Name" label="Name" value={user.name} />
+                            <TextInput readonly={true} onChange={this.textChanged} name="LastName" label="Last Name" value={user.lastName} />
+                            <TextInput readonly={true} onChange={this.textChanged} name="ContactEmail" label="Contact Email" value={user.contactEmail} />
                             {/* <div className="btn-group" style={{ float: "right" }}>
                                 <button style={{ float: "right" }} type="submit" class="btn btn-primary btn-default">Save Changes</button>
                                 <button style={{ float: "right" }} type="button" class="btn btn-primary btn-default">Discard Changes</button>
