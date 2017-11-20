@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import TextInput from "../common/TextInput";
 import Avatar from '../common/Avatar'; 
 import UserReadOnlyProfile from '../User/UserReadOnlyProfile';
+import {TrackedComponent,ReactAI} from '../../AppInsights';
 
 
 
-class UserProfile extends Component {
+class UserProfile extends TrackedComponent {
 
 
     constructor(props, context) {
