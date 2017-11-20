@@ -15,9 +15,9 @@ const NewsCard = ({ news }) => {
 
         <div className="panel panel-primary">
             <div className="panel-heading">
-                <h3 className="panel-title">{news.title}</h3>
+                <h3 className="panel-title">{news.Title}</h3>
             </div>
-            <div className="panel-body"> {news.message} </div>
+            <div className="panel-body"> {news.MessageDesc} </div>
         </div>
     );
 

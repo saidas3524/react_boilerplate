@@ -4,9 +4,22 @@ import {
 } from './NavigationDisplay';
 
 
+import {
+    navigationSelector
+} from './../../selectors'
+
 const mapStateToProps = (state) => {
-    return {
-        
+    const navigationMenu = navigationSelector(state);
+    if(navigationMenu != null)
+    {
+        console.log("mapStateToProps: nav selector called :" + navigationMenu.toJS());
+    }    
+    return navigationMenu ? {
+        ...navigationMenu.toJS(),
+        fetched:true,
+        navigationMenu: navigationMenu.toJS()
+    } : {
+        fetched:false
     }
 };
 const mapDispatchToProps = (dispatch) => ({

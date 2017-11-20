@@ -6,6 +6,7 @@ import './app.css';
 import Locale from './common/Locale';
 import UserProfile from './User/UserProfile';
 import WelcomePage from './Welcome/WelcomePage';
+import NoAccessToResource from './Exceptions'
 import {connect} from 'react-redux';
 import {ActionBar} from '@ms-fw/fw-react'
 import { getCurrentUserInfo } from '../actions'
@@ -84,6 +85,8 @@ class App extends React.Component {
                     <NavigationContainer/>
                     <div style={{ minHeight: "1000px" }} className="container-fluid">
                         <Route path="/user" component={UserProfile} />
+                        <Route path="/NoAccessToResource" component={NoAccessToResource}/>
+                        
                         <Route exact path="/" component={WelcomePage} />
                     </div>
                     <footer className="container-fluid">
