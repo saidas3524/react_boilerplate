@@ -6,6 +6,7 @@ import './app.css';
 import Locale from './common/Locale';
 import UserProfile from './User/UserProfile';
 import WelcomePage from './Welcome/WelcomePage';
+import NoAccessToResource from './Exceptions'
 import {connect} from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import {TrackedComponent,ReactAI} from '../AppInsights'
@@ -23,9 +24,10 @@ import {
     Route,
     Link
 } from 'react-router-dom'
+import {NavigationContainer} from "./Navigation"
 
-
-
+import 'jquery';
+import 'bootstrap/dist/js/bootstrap';
 import MSAL_Wrapper from "../api/msal_wrapper"
 
 class App extends TrackedComponent {
@@ -90,8 +92,11 @@ class App extends TrackedComponent {
                     <header className="container-fluid">
                         <Header />
                     </header>
+                    <NavigationContainer/>
                     <div style={{ minHeight: "1000px" }} className="container-fluid">
                         <Route path="/user" component={UserProfile} />
+                        <Route path="/NoAccessToResource" component={NoAccessToResource}/>
+                        
                         <Route exact path="/" component={WelcomePage} />
                     </div>
                     <footer className="container-fluid">
