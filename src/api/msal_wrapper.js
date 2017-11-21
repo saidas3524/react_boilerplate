@@ -47,6 +47,7 @@ class MSAL_Wrapper {
     }
 
     logout() {
+        console.log("loggin off");
         this.clientApplication.logout();
     }
 

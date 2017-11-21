@@ -6,7 +6,8 @@ import './app.css';
 import Locale from './common/Locale';
 import UserProfile from './User/UserProfile';
 import WelcomePage from './Welcome/WelcomePage';
-import NoAccessToResource from './Exceptions'
+import Logout from './Logout/Logout';
+import NoAccessToResource from './Exceptions/NoAccessToResource'
 import {connect} from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import {TrackedComponent,ReactAI} from '../AppInsights'
@@ -22,6 +23,7 @@ import { getCurrentUserInfo } from '../actions'
 import {
     BrowserRouter as Router,
     Route,
+    Switch ,
     Link
 } from 'react-router-dom'
 import {NavigationContainer} from "./Navigation"
@@ -94,10 +96,12 @@ class App extends TrackedComponent {
                     </header>
                     <NavigationContainer/>
                     <div style={{ minHeight: "1000px" }} className="container-fluid">
-                        <Route path="/user" component={UserProfile} />
-                        <Route path="/NoAccessToResource" component={NoAccessToResource}/>
-                        
+                    <Switch>
+                        <Route exact path="/user" component={UserProfile} />
+                        <Route exact path="/logout" component={Logout} />
+                        <Route exact path="/NoAccessToResource" component={NoAccessToResource}/>                        
                         <Route exact path="/" component={WelcomePage} />
+                        </Switch>
                     </div>
                     <footer className="container-fluid">
                         <Footer languageChanged={this.languageChanged} />
