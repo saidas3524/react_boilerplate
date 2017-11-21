@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import MSAL_Wrapper from "../../api/msal_wrapper"
+import cache from 'memory-cache';
+
 class Logout extends React.Component {
     
     componentWillMount()
     {
+        cache.clear();
         MSAL_Wrapper.logout();
     }
 
