@@ -12,6 +12,8 @@ import {connect} from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import {TrackedComponent,ReactAI} from '../AppInsights'
 ReactAI.init({instrumentationKey:'cb845a63-5172-4e93-ab09-24f30f8987c6'});
+import ClaimsPage from './User/ClaimsPage';
+
 
 
 const history = createHistory()
@@ -101,6 +103,7 @@ class App extends TrackedComponent {
                         <Route exact path="/logout" component={Logout} />
                         <Route exact path="/NoAccessToResource" component={NoAccessToResource}/>                        
                         <Route exact path="/" component={WelcomePage} />
+                        <Route exact path="/claims" component={ClaimsPage} />
                         </Switch>
                     </div>
                     <footer className="container-fluid">

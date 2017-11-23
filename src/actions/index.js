@@ -6,3 +6,4 @@ export { setNavigationMenu , SET_NAVIGATION_MENU } from './setNavigationMenu';
 export { setNewsFeed , SET_NEWS_FEED } from './setNewsFeed';
 export {getResourceAccessRights, GET_RESOURCE_ACCESS_RIGHTS} from './getResourceAccessRights'
 export {setResourceAccessRights, SET_RESOURCE_ACCESS_RIGHTS} from './getResourceAccessRights'
+export {getClaims, GET_CLAIMS} from './getClaims'
