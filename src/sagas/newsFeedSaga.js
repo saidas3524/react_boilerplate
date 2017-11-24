@@ -5,12 +5,12 @@ import { fromJS } from 'immutable';
 
 
 import { InvokeUrl } from "./utilitySagas";
-import { SET_CURRENT_USER,setNewsFeed } from '../actions';
+import { SET_USER,setNewsFeed } from '../actions';
 
 export function* newsFeedSaga() {
     try {
 
-        var {UserID}   = yield take(SET_CURRENT_USER);  
+        var {UserID}   = yield take(SET_USER);  
 
         const responseC = yield call(InvokeUrl, `https://localhost/NavigationAndProfile.WebApi/GetMessagesByUserId`, 'GET');
 

@@ -4,7 +4,7 @@ import LocaleHOC from '../common/LocaleHOC'
 import { connect } from 'react-redux'
 
 import {
-    currentUserSelector, newsFeedSelector
+    userInfoSelector, newsFeedSelector
 } from './../../selectors'
 
 
@@ -43,7 +43,7 @@ class WelcomePage extends Component {
 }
 
 const mapStateToProps = (state) => {
-    var user = currentUserSelector(state);
+    var user = userInfoSelector(state);
     var newsFeed = newsFeedSelector(state);
     // if(user != null)
     // {

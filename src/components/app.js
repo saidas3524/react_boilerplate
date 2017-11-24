@@ -6,7 +6,7 @@ import './app.css';
 import Locale from './common/Locale';
 import UserProfile from './User/UserProfile';
 import WelcomePage from './Welcome/WelcomePage';
-import NoAccessToResource from './Exceptions'
+import {NoAccessToResource} from './Exceptions'
 import {connect} from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import {TrackedComponent,ReactAI} from '../AppInsights'
@@ -18,7 +18,7 @@ history.listen((location, action) => {
   ReactAI.trackRouterChange();
 });
 
-import { getCurrentUserInfo } from '../actions'
+import { getUserInfo } from '../actions'
 import {
     BrowserRouter as Router,
     Route,
@@ -42,7 +42,7 @@ class App extends TrackedComponent {
         setTimeout(function() { 
             console.log("user Name Inside:"+ MSAL_Wrapper.userName)     
           //  debugger;       
-            this.props.getCurrentUserInfo();
+            this.props.getUserInfo();
             // if(MSAL_Wrapper.userName)
             // {
             //     this.props.getCurrentUserInfo();
@@ -109,8 +109,8 @@ class App extends TrackedComponent {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    getCurrentUserInfo(){
-        dispatch(getCurrentUserInfo('test'));
+    getUserInfo(){
+        dispatch(getUserInfo('test'));
     }
 });
 

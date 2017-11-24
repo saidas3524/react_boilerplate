@@ -8,7 +8,10 @@ import { GET_CURRENT_USER_INFO, setCurrentUser } from './../actions';
 import { InvokeUrl } from "./utilitySagas";
 
 export function* currentUserSaga() {
-    const responseC = yield call(InvokeUrl, 'https://localhost/NavigationAndProfile.WebApi/GetUserInfo', 'GET');
+
+    const {id} = yield take(GET_CURRENT_USER_INFO);
+    
+    const responseC = yield call(InvokeUrl, 'https://localhost/NavigationAndProfile.WebApi/GetCurrentUserInfo', 'GET');
 
     const UserData = yield apply(responseC, responseC.json);
     console.log(UserData);
