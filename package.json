@@ -46,6 +46,7 @@
     "mocha": "^4.0.1",
     "msalx": "^0.1.2",
     "react-addons-test-utils": "^15.6.2",
+    "react-loadable": "^5.3.1",
     "redux-form": "^7.1.1",
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.0",
