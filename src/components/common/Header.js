@@ -42,19 +42,14 @@ class Header extends Component {
                     <h3 style={{ marginTop: "10px" }}>{locale.strings.HeaderName}</h3>
                 </div>
                 <div  className="col-md-2 col-xs-2 ">
-                    <Link to="/user">
+                   
                         <Avatar className="avatar_div" user={this.state.user} />
-                    </Link>
+                   
                 </div>
             </div>
 
         )
     }
 }
-
-
-
-
-
 
 export default LocaleHOC(Header);

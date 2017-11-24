@@ -6,13 +6,13 @@ import {fromJS} from 'immutable';
 
 import { SET_ACCESS_TOKEN, setNavigationMenu,setCurrentUser } from '../actions';
 
-import { InvokeUrl } from "./utilitySagas";
+import { InvokeUrl,InvokeCachedUrl } from "./utilitySagas";
 
 export function* navigationMenuSaga() {
     try {
         const { accessToken } = yield take(SET_ACCESS_TOKEN);
 
-        const response = yield call(InvokeUrl, 'https://api.microsoftoem.net/Companyaad/royd/v1/GetNavigation', 'GET');
+        const response = yield call(InvokeCachedUrl, 'https://api.microsoftoem.net/Companyaad/royd/v1/GetNavigation', 'GET');
         const navData = yield apply(response, response.json);
         var updatedMenu = navData.Items.map(function(d) {
             var dinner1 = d.Items.map(function(d1){     
