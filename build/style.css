@@ -123,4 +123,13 @@ footer .col-xs-12{
 .foo {
     outline: 1px solid#ddd;
 }
+
+
+
+.withAvatar {
+    line-height: 20px;
+    width:  20px;
+    height: 20px;
+    background: transparent url("https://mem.gfx.ms/me/MeControl/9.1.17292.1/msa_enabled.png") no-repeat;    
+}
 /*# sourceMappingURL=style.css.map*/
