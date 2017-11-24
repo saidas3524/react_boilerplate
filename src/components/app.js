@@ -14,6 +14,8 @@ import {TrackedComponent,ReactAI} from '../AppInsights'
 import Loadable from 'react-loadable';
 //import Pricing from "../pricing/components/Pricing"
 ReactAI.init({instrumentationKey:'cb845a63-5172-4e93-ab09-24f30f8987c6'});
+import ClaimsPage from './User/ClaimsPage';
+
 
 
 const history = createHistory()
@@ -53,7 +55,7 @@ class App extends TrackedComponent {
         setTimeout(function() { 
             console.log("user Name Inside:"+ MSAL_Wrapper.userName)     
           //  debugger;       
-            this.props.getCurrentUserInfo();
+            this.props.getUserInfo();
             // if(MSAL_Wrapper.userName)
             // {
             //     this.props.getCurrentUserInfo();
@@ -105,13 +107,14 @@ class App extends TrackedComponent {
                     </header>
                     <NavigationContainer/>
                     <div style={{ minHeight: "1000px" }} className="container-fluid">
-                    {/* <Switch> */}
+                    <Switch>
                         <Route exact path="/user" component={UserProfile} />
                         <Route exact path="/logout" component={Logout} />   
                         <Route exact path="/Pricing/:id" component={Pricing} />
                         <Route exact path="/NoAccessToResource" component={NoAccessToResource}/>                        
                         <Route exact path="/" component={WelcomePage} />
-                        {/* </Switch> */}
+                        <Route exact path="/claims" component={ClaimsPage} />
+                        </Switch>
                     </div>
                     <footer className="container-fluid">
                         <Footer languageChanged={this.languageChanged} />
@@ -123,8 +126,8 @@ class App extends TrackedComponent {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    getCurrentUserInfo(){
-        dispatch(getCurrentUserInfo('test'));
+    getUserInfo(){
+        dispatch(getUserInfo('test'));
     }
 });
 

@@ -13,12 +13,12 @@ const UserReadOnlyProfile = ({ user }) => {
                 </div>
             </div>
             <h4>Personal Info</h4>
-                        <hr />
-                        
+            <hr />
+
             <div>
-                <TextInput readonly={true} name="Name" label="Name" value={user.name} />
-                <TextInput readonly={true} name="LastName" label="Last Name" value={user.lastName} />
-                <TextInput readonly={true} name="ContactEmail" label="Contact Email" value={user.contactEmail} />
+                <TextInput readonly={true} name="Name" label="Name" value={user.FirstName} />
+                <TextInput readonly={true} name="LastName" label="Last Name" value={user.LastName} />
+                <TextInput readonly={true} name="ContactEmail" label="Contact Email" value={user.ContactEmail} />
             </div>
         </div>
     );

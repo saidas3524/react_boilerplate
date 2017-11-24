@@ -63,6 +63,7 @@
     "applicationinsights": "^1.0.0",
     "applicationinsights-js": "^1.0.14",
     "away": "^1.0.0",
+    "babel-cli": "^6.26.0",
     "babel-preset-stage-1": "^6.1.18",
     "bootstrap": "^3.3.7",
     "lodash": "^4.17.4",

@@ -30,7 +30,9 @@ export function* claimsSaga() {
         //         'Authorization': `Bearer ${accessToken}`
         //     }
         // });
-        const responseC = yield call(InvokeUrl, 'https://api.microsoftoem.net/Companyaad/royd/v1/GetClaims', 'GET');
+
+
+        const responseC = yield call(InvokeUrl, 'https://localhost/NavigationAndProfile.WebApi/GetClaims', 'GET');
 
         const claimsData = yield apply(responseC, responseC.json);
         console.log("claimsData :" + claimsData);

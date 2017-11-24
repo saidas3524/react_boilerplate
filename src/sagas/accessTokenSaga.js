@@ -3,11 +3,11 @@ import {fromJS} from 'immutable';
 import MSAL_Wrapper from "../api/msal_wrapper"
 //import fetch from 'isomorphic-fetch';
 
-import {GET_CURRENT_USER_INFO, setAccessToken} from './../actions';
+import {GET_USER_INFO, setAccessToken} from './../actions';
 
 export function* accessTokenSaga() {
     console.log("access token  saga Invoked")
-    const {id} = yield take(GET_CURRENT_USER_INFO);
+    const {id} = yield take(GET_USER_INFO);
 
     // debugger; const accestoken = yield
     // call(MSAL_Wrapper.clientApplication.acquireTokenSilent,
