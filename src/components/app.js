@@ -30,7 +30,7 @@ const Pricing = Loadable({
     }
   });
 
-import { getCurrentUserInfo } from '../actions'
+  import { getUserInfo } from '../actions'
 import {
     BrowserRouter as Router,
     Route,
