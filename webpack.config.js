@@ -17,7 +17,8 @@ module.exports = {
   output: {
     path: path.join(__dirname,"build"),
     publicPath: '/',
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[chunkhash].js',
+    libraryTarget: 'commonjs2' // THIS IS THE MOST IMPORTANT LINE! :mindblow: I wasted more than 2 days until realize this was the line most important in all this guide.
   },
   devtool: 'source-map',
   module: {
