@@ -9,3 +9,4 @@ npm-debug.log
 /.idea
 /es6
 /lib
+/.vs/config/applicationhost.config
