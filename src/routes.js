@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter,Switch,Route } from 'react-router-dom';
+import { HashRouter,Switch,Route } from 'react-router-dom';
 import App from "./components/app";
 import UserProfile from './components/User/UserProfile';
 

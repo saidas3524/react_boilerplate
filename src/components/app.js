@@ -29,7 +29,7 @@ const Pricing = Loadable({
 });
 
 import {getUserInfo} from '../actions'
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
+import {HashRouter as Router, Route, Switch, Link} from 'react-router-dom'
 import {NavigationContainer} from "./Navigation"
 
 import 'jquery';

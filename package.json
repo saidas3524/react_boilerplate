@@ -1,6 +1,6 @@
 {
   "name": "redux-simple-starter-arun",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Ux Core Redux with React and Babel support",
   "main": "lib/index",
   "module": "es6/index",
