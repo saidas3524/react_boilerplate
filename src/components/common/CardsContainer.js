@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextInput from './TextInput';
 import CardList from "./CardList";
 
 
@@ -32,10 +31,10 @@ class CardsContainer extends React.Component {
         return (
             <div className="form-group">
                     <div className="input-group">
-                        <input type="text" className="form-control" placeholder="Add Login Account" value={this.state.emailToAdd} onChange={this.emailChanged}/>
+                        <input type="text" className="form-control" name="emailToAdd" placeholder="Add Login Account" value={this.state.emailToAdd} onChange={this.emailChanged}/>
               
                         <span className="input-group-btn">
-                            <button className="btn btn-secondary" type="button" onClick = {this.addLoginClicked}>Add</button>
+                            <button name="addEmailButton" className="btn btn-secondary" type="button" onClick = {this.addLoginClicked}>Add</button>
                         </span>
                     </div>
                     <br/>

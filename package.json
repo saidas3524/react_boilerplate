@@ -11,14 +11,30 @@
     "debug": "webpack-dev-server --port 8085",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
+    "test": "jest",
     "test:watch": "npm run test -- --watch"
   },
   "author": "OEM",
   "license": "ISC",
+  "jest": {
+    "unmockedModulePathPatterns": [
+      "React","applicationinsights-js","appinsights-usage","jquery"
+    ],
+    "setupFiles": [
+      "<rootDir>/jestsetup.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "transform": {
+      ".*": "<rootDir>/node_modules/babel-jest"
+    },
+    "collectCoverage": true
+  },
   "devDependencies": {
     "@ms-fw/fw-react": "^1.25.197-beta.0",
     "babel-core": "^6.26.0",
+    "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-regenerator": "^6.26.0",
@@ -30,6 +46,9 @@
     "chai": "^4.1.2",
     "chai-jquery": "^2.0.0",
     "css-loader": "^0.28.7",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "enzyme-to-json": "^3.2.2",
     "eslint": "2.9.0",
     "eslint-plugin-import": "1.6.1",
     "eslint-plugin-react": "5.0.1",
@@ -40,15 +59,20 @@
     "html-webpack-plugin": "^2.30.1",
     "image-webpack-loader": "^3.4.2",
     "immutable": "^3.8.2",
+    "install": "^0.10.2",
     "isomorphic-fetch": "^2.2.1",
+    "jest": "^21.2.1",
     "jquery": "^3.2.1",
     "jsdom": "^11.3.0",
     "mocha": "^4.0.1",
     "msalx": "^0.1.2",
+    "npm": "^5.5.1",
     "react-addons-test-utils": "^15.6.2",
+    "react-test-renderer": "^16.1.1",
     "redux-form": "^7.1.1",
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.0",
+    "redux-test-utils": "^0.2.2",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "rimraf": "^2.6.2",
@@ -65,9 +89,11 @@
     "babel-cli": "^6.26.0",
     "babel-preset-stage-1": "^6.1.18",
     "bootstrap": "^3.3.7",
+    "jest": "^21.2.1",
     "lodash": "^4.17.4",
     "memory-cache": "^0.2.0",
     "react": "^16.0.0",
+    "react-addons-test-utils": "^15.6.2",
     "react-appinsights": "^1.0.2",
     "react-dom": "^16.0.0",
     "react-redux": "5.0.6",

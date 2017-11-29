@@ -162,7 +162,7 @@ class UserProfile extends TrackedComponent {
                                 </div>
                                 <br/>
                                 <div className="span2">
-                                    <p><button className="btn btn-primary btn-block" disabled={ this.props.status!="DIRTY"} onClick = {this.SaveProfile}>Save</button></p>
+                                    <p><button className="btn btn-primary btn-block" name="saveProfile" disabled={ this.props.status!="DIRTY"} onClick = {this.SaveProfile}>Save</button></p>
                                     {/* <p><button className="btn btn-primary btn-block">Discard Changes</button></p> */}
                                 </div>
                                 {this.props.status && this.props.status!=DIRTY  && <Alert status ={this.props.status} message = {"successful"}/>}

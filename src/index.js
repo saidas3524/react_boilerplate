@@ -7,7 +7,6 @@ import { createStore, applyMiddleware } from 'redux';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { getStore } from './getStore';
 
-import Routes from './routes';
 
 import App from './components/app';
 import reducers from './reducers';
