@@ -18,7 +18,10 @@
   "license": "ISC",
   "jest": {
     "unmockedModulePathPatterns": [
-      "React","applicationinsights-js","appinsights-usage","jquery"
+      "React",
+      "applicationinsights-js",
+      "appinsights-usage",
+      "jquery"
     ],
     "setupFiles": [
       "<rootDir>/jestsetup.js"
@@ -92,6 +95,8 @@
     "bootstrap": "^3.3.7",
     "jest": "^21.2.1",
     "lodash": "^4.17.4",
+    "lodash.assign": "^4.2.0",
+    "lodash.foreach": "^4.5.0",
     "memory-cache": "^0.2.0",
     "react": "^16.0.0",
     "react-addons-test-utils": "^15.6.2",

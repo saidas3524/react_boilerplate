@@ -13,6 +13,7 @@ import { getQuery } from './utility'
 import { initSagas } from './initSagas';
 import { reducer } from './combineReducers';
 import { defaultState } from './defaultState';
+import {insightsMonitor} from "./AppInsights";
 
 const stateTransformer = (state) => {
     if (Iterable.isIterable(state)) return state.toJS();
@@ -25,7 +26,14 @@ const logger = createLogger({
 
 export const getStore = ()=>{
     const sagaMiddleware = createSagaMiddleware();
-    const middleWares = [sagaMiddleware,thunk];
+    const params = {
+        globals: {
+          env: 'dev'
+        },
+        exclude: ['trackAction']
+      };
+    // const insightsMonitor = insightsMonitor();
+    const middleWares = [insightsMonitor(params),sagaMiddleware,thunk];
     if (getQuery()['logger']) { middleWares.push(logger)}
     const composables = [applyMiddleware(...middleWares)
     //    , window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()

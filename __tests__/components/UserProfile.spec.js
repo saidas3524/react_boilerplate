@@ -6,7 +6,7 @@ import { fromJS } from 'immutable';
 
 
 import { createMockStore } from 'redux-test-utils';
-import shallowWithStore from "../shallowWithStore";
+import shallowWithStore from '../../__testHelpers/shallowWithStore';
 import { UPDATE_USER,SAVE_USER_PROFILE } from "../../src/actions";
 
 
