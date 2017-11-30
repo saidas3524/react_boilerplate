@@ -289,8 +289,8 @@ describe('UserProfile page', () => {
         expect(component).toMatchSnapshot();
         var email = "saidaso@microsoft.com";
         var data =  {
-            Realm : null,
-            LoginCredentialType:null,
+            Realm : undefined,
+            LoginCredentialType:undefined,
             LoginCredentialName: email,
             AADLoginCredentialName: email,
         }
