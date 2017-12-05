@@ -6,9 +6,9 @@ import Avatar from '../common/Avatar';
 import UserReadOnlyProfile from '../User/UserReadOnlyProfile';
 import { TrackedComponent, ReactAI } from '../../AppInsights';
 
-import { getCurrentUserInfo,updateUser,saveUserProfile,setSaveUserProfileStatus,DIRTY } from '../../actions';
+import { getCurrentUserInfo,updateUser,saveUserProfile,setSaveUserProfileStatus,DIRTY,INVALID,setSaveUserProfileMessage,saveProfileMessage,VALID,setSaveUserProfileVAlidationStatus } from '../../actions';
 import { connect } from 'react-redux';
-import { currentUserSelector,saveUserProfileStatusSelector } from "../../selectors";
+import { currentUserSelector,saveUserProfileStatusSelector,saveUserProfileMessageSelector,saveUserProfileValidationStatusSelector } from "../../selectors";
 import SelectInput from "../common/SelectInput";
 import CardsContainer from "../common/CardsContainer";
 
@@ -43,7 +43,19 @@ class UserProfile extends TrackedComponent {
 
     setFormDirty = ()=>{
         this.props.setDirtyStatus();
+        this.props.setSaveProfileMessage('');
     }
+
+    setInvalidStatus= () =>
+    {
+        this.props.setValidationStatus(INVALID);
+    }
+
+    setValidStatus= () =>
+    {
+        this.props.setValidationStatus(VALID);
+    }
+
 
     CountryChanged (event){
         this.setFormDirty();
@@ -124,13 +136,29 @@ class UserProfile extends TrackedComponent {
 
 
     SaveProfile = (event)=>{
+
+        console.log("this is save user", this.props.userTotalInfo.user);
+
         event.preventDefault();
+        
+        // if(this.props.userTotalInfo.user.CurrentLoginAccounts.length>0)
         this.props.SaveProfile(this.props.userTotalInfo);
+        // else
+        // {
+        //    this.props.setInvalidStatus();
+        //    this.props.setSaveProfileMessage("There is no logincredential");
+        //    console.info(this.props);
+        // }
+
     }
 
     render() {
         const { props } = this;
         const { userProfile } = props;
+
+        console.info('this is state in props',props);
+
+        console.info('this is state in props',this.props.status);
 
         return (
 
@@ -156,16 +184,16 @@ class UserProfile extends TrackedComponent {
                                     <div style={{padding:"15px"}}>
                                     <label>Login Accounts</label>
                                     
-                                    <CardsContainer values={userProfile.LoginCredentials} AddLoginCredential = {this.AddLoginCredential} LoginCredentialRemoved = {this.LoginCredentialRemoved} />
+                                    <CardsContainer values={userProfile.LoginCredentials} AddLoginCredential = {this.AddLoginCredential} LoginCredentialRemoved = {this.LoginCredentialRemoved}  setValidStatus={this.setValidStatus} setInvalidStatus ={this.setInvalidStatus} />
                                     
                                     </div>
                                 </div>
                                 <br/>
                                 <div className="span2">
-                                    <p><button className="btn btn-primary btn-block" disabled={ this.props.status!="DIRTY"} onClick = {this.SaveProfile}>Save</button></p>
+                                    <p><button className="btn btn-primary btn-block" disabled={ this.props.validationstatus == INVALID  }  onClick = {this.SaveProfile}>Save</button></p>
                                     {/* <p><button className="btn btn-primary btn-block">Discard Changes</button></p> */}
                                 </div>
-                                {this.props.status && this.props.status!=DIRTY  && <Alert status ={this.props.status} message = {"successful"}/>}
+                                {this.props.status && this.props.status!=DIRTY && <Alert status ={this.props.status} message = {this.props.message}/>}
                             </div>
                         </div>
                     </form></div>}
@@ -187,6 +215,12 @@ const mapDispatchToProps = (dispatch) => ({
     },
     setDirtyStatus(){
         dispatch(setSaveUserProfileStatus(DIRTY))
+    },
+    setValidationStatus(value){
+        dispatch(setSaveUserProfileVAlidationStatus(value))
+    },
+    setSaveProfileMessage(value){
+        dispatch(setSaveUserProfileMessage(value))
     }
 });
 
@@ -194,6 +228,14 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => {
     var userTotalInfo = currentUserSelector(state);
     var status = saveUserProfileStatusSelector(state);
+
+    var message = saveUserProfileMessageSelector(state);
+
+    var validationstatus = saveUserProfileValidationStatusSelector(state);
+
+    console.info("this is validationstatus",validationstatus);
+
+    console.info("this is state in state to props",state);
 
     if (userTotalInfo) {
         userTotalInfo = userTotalInfo.toJS();
@@ -246,7 +288,9 @@ const mapStateToProps = (state) => {
             languages: languages,
             timezones: timezones,
             fetched: true,
-            status: status
+            status: status,
+            message: message,
+            validationstatus : validationstatus
         }
     }
     return {

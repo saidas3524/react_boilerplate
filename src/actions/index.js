@@ -10,4 +10,5 @@ export {getResourceAccessRights, GET_RESOURCE_ACCESS_RIGHTS} from './getResource
 export {setResourceAccessRights, SET_RESOURCE_ACCESS_RIGHTS} from './getResourceAccessRights'
 export {getClaims, GET_CLAIMS} from './getClaims'
 export {updateUser,UPDATE_USER} from './updateUser'
-export {saveUserProfile,SAVE_USER_PROFILE,setSaveUserProfileStatus,SAVE_USER_PROFILE_STATUS,DIRTY,SAVED,SAVING,FAILED} from './saveUserProfile'
+export {saveUserProfile,SAVE_USER_PROFILE,setSaveUserProfileStatus,SAVE_USER_PROFILE_STATUS,DIRTY,SAVED,SAVING,FAILED,INVALID
+,setSaveUserProfileMessage,SAVE_USER_PROFILE_MESSAGE,VALID,SAVE_USER_PROFILE_VALIDATION_STATUS,setSaveUserProfileVAlidationStatus} from './saveUserProfile'

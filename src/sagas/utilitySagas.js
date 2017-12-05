@@ -17,10 +17,34 @@ export function * InvokeUrl(url, method, data) {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
             'Authorization': `Bearer ${accessToken}`
-        }
+        },
+        body :data
     });
     return responseC;
 }
+
+export function * InvokeResponseUrl(url, method, data) {
+    
+        var accessToken = yield select(accessTokenSelector);
+        if (!accessToken) {
+            var result = yield take(SET_ACCESS_TOKEN);
+            accessToken = result.accessToken;
+        }
+        const responseC = yield call(fetch, url, {
+            method: method,
+                       headers: {
+               
+               
+              
+                
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            },
+            body :data
+        });
+        return responseC;
+    }
 
 export function * InvokeCachedUrl(url, method, data) {
     var accessToken = yield select(accessTokenSelector);

@@ -1,9 +1,15 @@
 import { makeActionCreator } from '../utility';
 export const SAVE_USER_PROFILE = "SAVE_USER_PROFILE";
 export const SAVE_USER_PROFILE_STATUS = "SAVE_USER_PROFILE_STATUS";
+export const SAVE_USER_PROFILE_MESSAGE="SAVE_USER_PROFILE_MESSAGE";
+export const SAVE_USER_PROFILE_VALIDATION_STATUS="SAVE_USER_PROFILE_VALIDATION_STATUS";
 export const SAVING = "SAVING";
 export const SAVED = "SAVED";
 export const FAILED = "FAILED";
 export const DIRTY = "DIRTY";
+export const INVALID="INVALID";
+export const VALID="VALID";
 export const saveUserProfile = makeActionCreator(SAVE_USER_PROFILE,"userInfo");
 export const setSaveUserProfileStatus = makeActionCreator(SAVE_USER_PROFILE_STATUS,"status");
+export const setSaveUserProfileMessage= makeActionCreator(SAVE_USER_PROFILE_MESSAGE,"message");
+export const setSaveUserProfileVAlidationStatus= makeActionCreator(SAVE_USER_PROFILE_VALIDATION_STATUS,"validationstatus");

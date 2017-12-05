@@ -16,7 +16,7 @@ class CardList extends React.Component{
     render(){
         const {values} = this.props;
         return (
-            <div>
+            <div > 
                 {values &&
                     <div>
                         
@@ -25,7 +25,9 @@ class CardList extends React.Component{
                             {values.map((value) => {
                                 return (
                                 <li key={value.LoginCredentialName} className="list-group-item">
-                                    <span className="badge" onClick = {()=>this.removeClicked(value)}><span className="glyphicon glyphicon-remove"></span></span>
+                                    {values.length>1 && <span className="badge"  onClick = {()=>this.removeClicked(value)}>
+                                        <span className="glyphicon glyphicon-remove"></span>
+                                    </span>}
                                         {value.LoginCredentialName}
                                 </li> )
                             })}

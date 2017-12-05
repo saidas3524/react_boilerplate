@@ -4,4 +4,4 @@ export { accessToken } from './accessToken';
 export { newsFeed } from './newsFeed';
 export { navigationMenu } from './navigationMenu';
 export { claims } from './claims';
-export { saveProfileStatus } from './saveProfileStatus';
+export { saveProfileStatus,saveProfileMessage,saveProfileValidationStatus } from './saveProfileStatus';

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Alert = ({status,message})=>{
     let wrapperClass = 'alert alert-dismissible';
-    if(status =="FAILED")
+    if(status =="FAILED" || status== "INVALID")
         wrapperClass +=" "+'alert-danger';
     else
         wrapperClass +=" "+'alert-success';
