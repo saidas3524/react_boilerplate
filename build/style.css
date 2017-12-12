@@ -132,4 +132,9 @@ footer .col-xs-12{
     height: 20px;
     background: transparent url("https://mem.gfx.ms/me/MeControl/9.1.17292.1/msa_enabled.png") no-repeat;    
 }
+
+.invalid-feedback
+{
+    color: red;
+}
 /*# sourceMappingURL=style.css.map*/
