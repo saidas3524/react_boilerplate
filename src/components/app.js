@@ -11,6 +11,8 @@ import NoAccessToResource from './Exceptions/NoAccessToResource'
 import {connect} from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import {TrackedComponent,ReactAI} from '../AppInsights'
+import Loadable from 'react-loadable';
+//import Pricing from "../pricing/components/Pricing"
 ReactAI.init({instrumentationKey:'cb845a63-5172-4e93-ab09-24f30f8987c6'});
 import ClaimsPage from './User/ClaimsPage';
 
@@ -21,7 +23,14 @@ history.listen((location, action) => {
   ReactAI.trackRouterChange();
 });
 
-import { getUserInfo } from '../actions'
+const Pricing = Loadable({
+    loader: () => import("../pricing/components/Pricing"),
+    loading() {
+      return <div>Loading...</div>
+    }
+  });
+
+  import { getUserInfo } from '../actions'
 import {
     BrowserRouter as Router,
     Route,
@@ -100,7 +109,8 @@ class App extends TrackedComponent {
                     <div style={{ minHeight: "1000px" }} className="container-fluid">
                     <Switch>
                         <Route exact path="/user" component={UserProfile} />
-                        <Route exact path="/logout" component={Logout} />
+                        <Route exact path="/logout" component={Logout} />   
+                        <Route exact path="/Pricing/:id" component={Pricing} />
                         <Route exact path="/NoAccessToResource" component={NoAccessToResource}/>                        
                         <Route exact path="/" component={WelcomePage} />
                         <Route exact path="/claims" component={ClaimsPage} />

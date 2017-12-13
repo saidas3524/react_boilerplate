@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TextInput from './TextInput';
 import CardList from "./CardList";
 import { createValidator } from "../../utility/createValidator";
 

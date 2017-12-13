@@ -5,7 +5,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 
 const VENDOR_LIBS = [
-  'react','faker', 'lodash', 'redux', 'react-redux', 
+  'react','faker', 'lodash', 'redux', 'react-redux', 'react-loadable', 
   'react-dom', 'redux-form', 'redux-thunk','bootstrap','jquery'
 ];
 

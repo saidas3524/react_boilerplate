@@ -10,9 +10,7 @@ const Card = function ({ card }) {
             {card &&
                 <div>
                     <div className="card bordered">
-                    {/* <button type="button" class="btn btn-default" aria-label="Right Align"> */}
                         <span className="glyphicon glyphicon-remove"></span>
-                    {/* </button> */}
                         <div className="card-block">
                             This is some text within a card block.
                          </div>
